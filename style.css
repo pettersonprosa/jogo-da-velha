@@ -10,6 +10,14 @@
     font-size: 50px;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10vh;
+}
+
 #div-jogo {
     height: 160px;
     width: 160px;

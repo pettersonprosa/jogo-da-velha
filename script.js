@@ -1,30 +1,42 @@
 var jogo = [[], [], []]; // matriz
 var tabuleiro = [[], [], []]; //guardar posições
-var jogador_atual = 2; // 1 => 1° Jogador1; 2 => 2° Jogador
+
+var jogador_um = {
+    'nome': "Jogador 1",
+    'pontos': 0
+}
+
+var jogador_dois = {
+    'nome': "Jogador 2",
+    'pontos': 0
+}
+
+var jogador_atual = jogador_dois;
+var jogador_inicial = jogador_dois;
+
 var jogando = true;
-var jogador_inicial = 2;
 
 function verifica_vitoria() {
     var linha;
     var coluna;
 
-    //Linhas
+    // Linhas
     for (linha = 0; linha < 3; linha++) {
         if ((jogo[linha][0] == jogo[linha][1]) && (jogo[linha][1] == jogo[linha][2])) {
             return jogo[linha][0];
         }
     }
-    //Colunas
+    // Colunas
     for (coluna = 0; coluna < 3; coluna++) {
         if ((jogo[0][coluna] == jogo[1][coluna]) && (jogo[1][coluna] == jogo[2][coluna])) {
             return jogo[0][coluna];
         }
     }
-    //Diagonal Princial
+    // Diagonal Principal
     if ((jogo[0][0] == jogo[1][1]) && (jogo[1][1] == jogo[2][2])) {
         return jogo[0][0];
     }
-    //Diagonal Secundária
+    // Diagonal Secundária
     if ((jogo[0][2] == jogo[1][1]) && (jogo[1][1] == jogo[2][0])) {
         return jogo[0][2];
     }
@@ -33,55 +45,54 @@ function verifica_vitoria() {
 }
 
 function alerta_continuar_jogo() {
-    continuar_jogo = prompt("Deseja continuar jogando? \n s: sim \n n: não")
-    if (continuar_jogo == "n") {
-        jogando = false
-    } else if (continuar_jogo == "s") {
+    let continuar_jogo = confirm("Deseja continuar jogando?")
+
+    if (continuar_jogo) {
         inicia_jogo()
+    } else {
+        jogando = false
     }
 }
 
 function marcar_jogada(linha, coluna) {
-    if (jogo[linha][coluna] == "" && jogador_atual == 1) {
+    if (jogo[linha][coluna] == "" && jogador_atual == jogador_um) {
         jogo[linha][coluna] = "X";
         num_jogadas++;
-        jogador_atual = 2;
+        jogador_atual = jogador_dois;
+        
         atualiza_tabuleiro();
-        //verifica_vitoria();
+        
         if (verifica_vitoria() == "X") {
+            jogador_um.pontos++
+            document.getElementById("jogador-um-pontos").innerText = `Pontos: ${jogador_um.pontos}`
             setTimeout(declara_vitoria_jogador_um, 150);
-            // alert("Vitória do Jogador 1(X)");
-            // alerta_continuar_jogo();
         } else if (num_jogadas == 9) {
-            setTimeout(declara_empate, 100);
-            // alert("Empate")
-            // alerta_continuar_jogo();
+            setTimeout(declara_empate, 150);
         }
-    } else if (jogo[linha][coluna] == "" && jogador_atual == 2) {
+    } else if (jogo[linha][coluna] == "" && jogador_atual == jogador_dois) {
         jogo[linha][coluna] = "O";
         num_jogadas++;
-        jogador_atual = 1;
+        jogador_atual = jogador_um;
+        
         atualiza_tabuleiro();
-        //verifica_vitoria();
+
         if (verifica_vitoria() == "O") {
+            jogador_dois.pontos++
+            document.getElementById("jogador-dois-pontos").innerText = `Pontos: ${jogador_dois.pontos}`
             setTimeout(declara_vitoria_jogador_dois, 150);
-            //alert("Vitória do Jogador 2(O)")
-            //alerta_continuar_jogo();
         } else if (num_jogadas == 9) {
-            //setTimeout(declara_empate, 250);
-            alert("Empate")
-            alerta_continuar_jogo();
+            setTimeout(declara_empate, 150);
         }
     }
 }
 
 function declara_vitoria_jogador_um() {
-    alert("Vitória do Jogador 1(X)");
+    alert(`Vitória de ${jogador_um.nome}`);
     alerta_continuar_jogo();
 }
 
 function declara_vitoria_jogador_dois() {
-    alert("Vitória do Jogador 2(O)");
+    alert(`Vitória de ${jogador_dois.nome}`);
     alerta_continuar_jogo();
 }
 
@@ -151,7 +162,9 @@ function atualiza_tabuleiro() {
 
 function inicia_jogo() {
     jogando = true;
+
     num_jogadas = 0;
+
     jogo = [
         ["", "", ""],
         ["", "", ""],
@@ -168,23 +181,36 @@ function inicia_jogo() {
 
     atualiza_tabuleiro();
 
-    if (jogador_inicial == 2) {
-        jogador_inicial = 1;
+    if (jogador_inicial == jogador_dois) {
+        jogador_inicial = jogador_um;
         jogador_atual = jogador_inicial;
-        document.getElementById("div-jogador-inicia").innerHTML = "Quem Começa: 1° Jogador";
     } else {
-        jogador_inicial = 2;
+        jogador_inicial = jogador_dois;
         jogador_atual = jogador_inicial;
-        document.getElementById("div-jogador-inicia").innerHTML = "Quem Começa: 2° Jogador";
     }
 
-    window.addEventListener("load", inicia_jogo)
+    preenche_textos()
 }
 
-function nova_partida() {
-    var jogo = [[], [], []]; // matriz
-    var tabuleiro = [[], [], []]; //guardar posições
-    var jogador_atual = 2; // 1 => 1° Jogador1; 2 => 2° Jogador
-    var jogando = true;
-    var jogador_inicial = 2;
+function preenche_textos() {
+    document.getElementById("texto-jogador-inicia").innerText = `Quem Começa: ${jogador_inicial.nome}`;
+
+    document.getElementById("jogador-um-nome").innerText = jogador_um.nome
+    document.getElementById("jogador-dois-nome").innerText = jogador_dois.nome
+
+    document.getElementById("jogador-um-pontos").innerText = `Pontos: ${jogador_um.pontos}`
+    document.getElementById("jogador-dois-pontos").innerText = `Pontos: ${jogador_dois.pontos}`
+    
 }
+
+function nome_valido(nome) {
+    return nome != null && nome.length > 0
+}
+
+let nome_jogador_um = prompt("Qual é o nome do jogador 1?")
+let nome_jogador_dois = prompt("Qual é o nome do jogador 2?")
+
+jogador_um.nome = nome_valido(nome_jogador_um) ? nome_jogador_um : "Jogador 1"
+jogador_dois.nome = nome_valido(nome_jogador_dois) ? nome_jogador_dois : "Jogador 2"
+
+inicia_jogo()

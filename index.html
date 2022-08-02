@@ -1,57 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Velha</title>
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
-    <script type="text/javascript" src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Jogo da Velha</title>
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 </head>
 <body>
+  <h1 id="titulo">Jogo da Velha</h1>
 
-    <main class="container">
-        
-        <div id="div-menu">
-            <div id="div-jogador-inicia"></div>
-            <button onclick="inicia_jogo()">Iniciar Partida</button>
-        </div>
-    
-        <table></table>
-    
-        <div id="div-jogo">
-            <div id="p1" class="posicao-jogo" onclick="jogar(1)"></div>
-            <div id="p2" class="posicao-jogo" onclick="jogar(2)"></div>
-            <div id="p3" class="posicao-jogo" onclick="jogar(3)"></div>
-            <div id="p4" class="posicao-jogo" onclick="jogar(4)"></div>
-            <div id="p5" class="posicao-jogo" onclick="jogar(5)"></div>
-            <div id="p6" class="posicao-jogo" onclick="jogar(6)"></div>
-            <div id="p7" class="posicao-jogo" onclick="jogar(7)"></div>
-            <div id="p8" class="posicao-jogo" onclick="jogar(8)"></div>
-            <div id="p9" class="posicao-jogo" onclick="jogar(9)"></div>
-        </div>
-    
-        <table>
-            <tr>
-              <th>Jogador</th>
-              <th>Vitória</th>
-              <th>Derrota</th>
-              <th >Empates</th>
-            </tr>
-            <tr>
-              <td>Jogador 1</td>
-              <td id="v-jogador1"></td>
-              <td id="d-jogador1"></td>
-              <td id="empate" rowspan="2"></td>
-            </tr>
-            <tr>
-              <td>Jogador 2</td>
-              <td id="v-jogador1"></td>
-              <td id="d-jogador1"></td>   
-            </tr>
-        </table>
-            
-    </main>
-    
+  <div id="div-jogo">
+    <h3 id="texto-jogador-inicia"></h3>
+
+    <div id="div-tabuleiro">
+      <div id="p1" class="posicao-jogo" onclick="jogar(1)"></div>
+      <div id="p2" class="posicao-jogo" onclick="jogar(2)"></div>
+      <div id="p3" class="posicao-jogo" onclick="jogar(3)"></div>
+      <div id="p4" class="posicao-jogo" onclick="jogar(4)"></div>
+      <div id="p5" class="posicao-jogo" onclick="jogar(5)"></div>
+      <div id="p6" class="posicao-jogo" onclick="jogar(6)"></div>
+      <div id="p7" class="posicao-jogo" onclick="jogar(7)"></div>
+      <div id="p8" class="posicao-jogo" onclick="jogar(8)"></div>
+      <div id="p9" class="posicao-jogo" onclick="jogar(9)"></div>
+    </div>
+
+    <button id="botao-reinicia-jogo"onclick="inicia_jogo()">Reiniciar Partida</button>
+  </div>
+
+  <div id="pontos-container">
+    <div class="jogador-container" id="jogador-um-container">
+        <h3 id="jogador-um-nome"></h3>
+        <p id="jogador-um-pontos"></a>
+    </div>
+
+    <div class="jogador-container" id="jogador-dois-container">
+      <h3 id="jogador-dois-nome"></h3>
+      <p id="jogador-dois-pontos"></a>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

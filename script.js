@@ -95,7 +95,7 @@ function preencher_textos() {
 }
 
 function verificar_nome_valido(nome) {
-    return nome != null && nome.length > 0
+    return nome != null && nome.trim().length > 0
 }
 
 function jogar(posicao) {
@@ -195,6 +195,32 @@ function alerta_continuar_jogo() {
         iniciar_jogo()
     } else {
         jogando = false
+    }
+}
+
+// Zera placar
+function zerar_placar() {
+    jogador_um.pontos = 0;
+    jogador_dois.pontos = 0;
+    preencher_textos();
+}
+
+// Alterar nomes
+function altera_nome_jogador_um() {
+    let nome_jogador_um = prompt("Qual é o nome do jogador 1?")
+    
+    if (verificar_nome_valido(nome_jogador_um)) {
+        jogador_um.nome = nome_jogador_um
+        document.getElementById("jogador-um-nome").innerText = jogador_um.nome
+    }
+}
+
+function altera_nome_jogador_dois() {
+    let nome_jogador_dois = prompt("Qual é o nome do jogador 2?")
+    
+    if (verificar_nome_valido(nome_jogador_dois)) {
+        jogador_dois.nome = nome_jogador_dois
+        document.getElementById("jogador-dois-nome").innerText = jogador_dois.nome
     }
 }
 

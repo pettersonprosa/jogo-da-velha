@@ -26,20 +26,24 @@
       <div id="p9" class="posicao-jogo" onclick="jogar(8)"></div>
     </div>
 
-    <button id="botao-reinicia-jogo"onclick="iniciar_jogo()">Reiniciar Partida</button>
-    <button id="botao-zera-placar"onclick="zerar_placar()">Zerar Placar</button>
-    <button id="botao-altera-nomes"onclick="altera_nomes()">Alterar Nomes</button>
+    <div id="div-botoes-reset">
+      <button id="botao-reinicia-jogo"onclick="iniciar_jogo()">Reiniciar Partida</button>
+      <button id="botao-zera-placar"onclick="zerar_placar()">Zerar Placar</button>
+    </div>
+    
   </div>
 
   <div id="pontos-container">
     <div class="jogador-container" id="jogador-um-container">
         <h3 id="jogador-um-nome"></h3>
-        <p id="jogador-um-pontos"></a>
+        <p id="jogador-um-pontos"></p>
+        <button class="botao-renomear-jogador" onclick="altera_nome_jogador_um()">Alterar Nome</button>
     </div>
 
     <div class="jogador-container" id="jogador-dois-container">
       <h3 id="jogador-dois-nome"></h3>
-      <p id="jogador-dois-pontos"></a>
+      <p id="jogador-dois-pontos"></p>
+      <button class="botao-renomear-jogador" onclick="altera_nome_jogador_dois()">Alterar Nome</button>
     </div>
   </div>
 

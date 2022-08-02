@@ -96,5 +96,13 @@ h1, h3, p {
 }
 
 .jogador-container {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
+}
+
+.botao-renomear-jogador {
+    width: fit-content;
+    align-self: center;
+    margin-top: 12px;
 }

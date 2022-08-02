@@ -198,6 +198,22 @@ function alerta_continuar_jogo() {
     }
 }
 
+// Zera placar
+function zerar_placar() {
+    jogador_um.pontos = 0;
+    jogador_dois.pontos = 0;
+    preencher_textos();
+}
+
+// Alterar nomes
+function altera_nomes() {
+    nome_jogador_um = prompt("Qual é o nome do jogador 1?")
+    nome_jogador_dois = prompt("Qual é o nome do jogador 2?")
+    jogador_um.nome = verificar_nome_valido(nome_jogador_um) ? nome_jogador_um : "Jogador 1"
+    jogador_dois.nome = verificar_nome_valido(nome_jogador_dois) ? nome_jogador_dois : "Jogador 2"
+    preencher_textos();
+}
+
 // Inicialização do jogo
 
 let nome_jogador_um = prompt("Qual é o nome do jogador 1?")

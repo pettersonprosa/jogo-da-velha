@@ -23,5 +23,5 @@ Para o desenvolvimento do jogo, os seguintes requisitos foram considerados:
 ## Arquivos
 
 - **index.html**: Arquivo HTML contendo os elementos utilizados para exibir o jogo para o usuário
-- **styles.css**: Arquivo CSS utilizado para estilizar a página HTML desenvolvida, responsável principalmente pela montagem do tabuleiro 3x3 e pela disposição dos elementos na página;
-- **main.js**: Arquivo JS contendo a parte lógica do jogo, responsável também por modificar os componentes HTML conforme as ações forem realizadas pelo usuário;
+- **style.css**: Arquivo CSS utilizado para estilizar a página HTML desenvolvida, responsável principalmente pela montagem do tabuleiro 3x3 e pela disposição dos elementos na página;
+- **script.js**: Arquivo JS contendo a parte lógica do jogo, responsável também por modificar os componentes HTML conforme as ações forem realizadas pelo usuário;
